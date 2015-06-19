@@ -16,18 +16,17 @@
 
         <section id="main">
           <ul id="todo-list">
-            <li class="completed">
-              <input type="checkbox" class="toggle">
-              <label>Learn Ember.js</label><button class="destroy"></button>
-            </li>
-            <li>
-              <input type="checkbox" class="toggle">
-              <label>...</label><button class="destroy"></button>
-            </li>
-            <li>
-              <input type="checkbox" class="toggle">
-              <label>Profit!</label><button class="destroy"></button>
-            </li>
+            <!-- Ember.js has created a controller for us and set the
+            controller's model property to our route's model. Because we don't
+            need custom behavior for this controller yet, we can use the
+            default object provided by the framework. -->
+
+            {{#each todo in model}}
+              <li>
+                <input type="checkbox" class="toggle">
+                <label>{{todo.title}}</label><button class="destroy"></button>
+              </li>
+            {{/each}}
           </ul>
 
           <input type="checkbox" id="toggle-all">
@@ -66,7 +65,8 @@
     <!-- <script src="js/libs/ember.prod.js"></script> --> <!-- 2.0.0-beta.1 does not work -->
     <!-- <script src="js/libs/ember.prod-1.13.0.js"></script> --> <!-- 1.13.0 does not work -->
     <script src="js/libs/ember-1.8.1.js"></script>
-    <script src="js/libs/ember-data.prod.js"></script> <!-- 1.13.2 -->
+    <!-- <script src="js/libs/ember-data.prod.js"></script> --> <!-- 1.13.2 -->
+    <script src="js/libs/ember-data-1.0.0-beta.11.js"></script> <!-- 1.0.0-beta.11 -->
     <script src="js/application.js"></script>
     <script src="js/router.js"></script>
     <script src="js/models/todo.js"></script>
