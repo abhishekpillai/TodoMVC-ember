@@ -37,7 +37,17 @@
               <!-- http://guides.emberjs.com/v1.10.0/templates/binding-element-attributes/ -->
               <li {{bind-attr class="todo.isCompleted:completed todo.isEditing:editing"}}>
                 {{#if todo.isEditing}}
-                  <input class="edit">
+                  {{edit-todo
+                      class="edit"
+                      value=todo.title
+                      focus-out="acceptChanges"
+                      insert-newline="acceptChanges"}}
+
+                  {{!-- Pressing the <enter> key will trigger the acceptChanges event
+                        Moving focus away from the <input> will trigger the
+                        focus-out event and thus the acceptChanges on this view's
+                        instance of TodoController --}}
+
                 {{else}}
                   {{input type="checkbox" checked=todo.isCompleted class="toggle"}}
                   <label {{action "editTodo" on="doubleClick"}}>
@@ -91,5 +101,6 @@
     <script src="js/models/todo.js"></script>
     <script src="js/controllers/todos_controller.js"></script>
     <script src="js/controllers/todo_controller.js"></script>
+    <script src="js/views/edit_todo_view.js"></script>
   </body>
 </html>
