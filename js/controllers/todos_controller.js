@@ -45,5 +45,12 @@ Todos.TodosController = Ember.ArrayController.extend({
 
   completed: function() {
     return this.filterBy('isCompleted', true).get('length');
+  }.property('@each.isCompleted'),
+
+  //  If the isCompleted property of any todo changes, this property will be
+  //  recomputed. If the return value has changed, sections of the template
+  //  that need to update will be automatically updated for us.
+  allAreDone: function(key, value) {
+    return !!this.get('length') && this.isEvery('isCompleted');
   }.property('@each.isCompleted')
 });

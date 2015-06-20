@@ -60,15 +60,15 @@
         </header>
 
         <section id="main">
-            {{outlet}}
+          {{outlet}}
 
-            {{!--
-                The {{outlet}} Handlebars helper designates an area of a
-                template that will dynamically update as we transition between
-                routes
-              --}}
+          {{!--
+              The {{outlet}} Handlebars helper designates an area of a
+              template that will dynamically update as we transition between
+              routes
+            --}}
 
-          <input type="checkbox" id="toggle-all">
+          {{input type="checkbox" id="toggle-all" checked=allAreDone}}
         </section>
 
         <footer id="footer">
